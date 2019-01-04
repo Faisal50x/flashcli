@@ -1,0 +1,39 @@
+{
+  "name": "@faisal50x/flashcli",
+  "version": "0.5.0",
+  "description": "Flash nodejs framework development",
+  "keywords": [
+    "express",
+    "flashcli",
+    "nodejs framework",
+    "microframework",
+    "flash",
+    "nodejs orm",
+    "mongodb"
+  ],
+  "main": "bin/exec.js",
+  "preferGlobal": "true",
+  "bin": {
+    "flash": "./bin/exec.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": {
+    "name": "Faisal Ahmed",
+    "email": "hello@imfaisal.me",
+    "url": "http://imfaisal.me"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Faisal50x/flashcli.git"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "chalk": "^2.4.1",
+    "child_process": "^1.0.2",
+    "commander": "^2.19.0",
+    "fs-extra": "^7.0.1",
+    "path": "^0.12.7"
+  }
+}
