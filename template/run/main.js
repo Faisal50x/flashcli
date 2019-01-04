@@ -1,7 +1,14 @@
 #!/usr/bin/env node
-const debug = require('debug')('http')
-    , app = require('../boot')
-    , http = require('http'),
+
+/** 
+ * @author Faisal Ahmed
+ * @license MIT
+ * @application flash
+ * */
+
+const debug = require('debug')('http'),
+    app = require('../boot'),
+    http = require('http'),
     port = require('../app/config/config').general.PORT;
 
 
@@ -14,7 +21,7 @@ const server = http.createServer(app);
  * Listen on provided port, on all network interfaces.
  */
 
-server.listen(port,()=> debug('listening'));
+server.listen(port, () => debug('listening'));
 server.on('error', onError);
 server.on('listening', onListening);
 
@@ -34,9 +41,9 @@ function onError(error) {
         throw error;
     }
 
-    let bind = typeof port === 'string'
-        ? 'Pipe ' + port
-        : 'Port ' + port;
+    let bind = typeof port === 'string' ?
+        'Pipe ' + port :
+        'Port ' + port;
 
     // handle specific listen errors with friendly messages
     switch (error.code) {
@@ -60,5 +67,5 @@ function onError(error) {
 function onListening() {
     let addr = server.address();
     let bind = typeof addr === 'string' ? 'pipe ' + addr : 'port ' + addr.port;
-    console.log('Listening on '+ bind);
+    console.log('Listening on ' + bind);
 }
