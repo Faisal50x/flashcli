@@ -1,4 +1,8 @@
-
+/** 
+ * @author Faisal Ahmed
+ * @license MIT
+ * @application flash
+ * */
 module.exports = {
     /**
      * @var general
@@ -31,7 +35,7 @@ module.exports = {
          * @description application role management setup
          * @default ['guest','user','admin']
          */
-        ROLES: ['guest','user','admin']
+        ROLES: ['guest', 'user', 'admin']
     },
     session: {
         /**
@@ -57,12 +61,12 @@ module.exports.database = {
      * when prepare your full application to deploy change environment to production
      */
     environment: "development:mongodb",
-    development:{
+    development: {
         /**
          * Mongo DB Setup
          * Use your own mongodb database connection
          */
-        mongodb:{
+        mongodb: {
             host: "127.0.0.1",
             port: "27017",
             dbName: "blog",
@@ -75,23 +79,23 @@ module.exports.database = {
          * @supported mysql|sqlite|postgres|mssql
          * @default mysql
          */
-        sql:{
-            driver:'mysql',
-            host:'localhost',
+        sql: {
+            driver: 'mysql',
+            host: 'localhost',
             dbName: 'test',
-            dbPass:'',
-            dbUser:'root',
+            dbPass: '',
+            dbUser: 'root',
 
             // SQLite only
-            storage:'path/to/database.sqlite'
+            storage: 'path/to/database.sqlite'
         }
     },
-    production:{
+    production: {
         /**
          * Mongo DB Setup
          * Use your own mongodb database connection
          */
-        mongodb:{
+        mongodb: {
             host: "127.0.0.1",
             port: "27017",
             dbName: "blog",
@@ -104,15 +108,15 @@ module.exports.database = {
          * @supported mysql|sqlite|postgres|mssql
          * @default mysql
          */
-        sql:{
-            driver:'mysql',
-            host:'localhost',
+        sql: {
+            driver: 'mysql',
+            host: 'localhost',
             dbName: 'test',
-            dbPass:'',
-            dbUser:'root',
+            dbPass: '',
+            dbUser: 'root',
 
             // SQLite only
-            storage:'path/to/database.sqlite'
+            storage: 'path/to/database.sqlite'
         }
     }
 };

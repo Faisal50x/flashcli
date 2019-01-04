@@ -1,21 +1,36 @@
-
+/** 
+ * @author Faisal Ahmed
+ * @license MIT
+ * */
 
 
 class UserController {
-    async index(Request,Response) {
-        Response.status(200).json({
+    /**
+     * @author Faisal Ahmed
+     * @param {*} Request 
+     * @param {*} Response 
+     * @return Response
+     */
+    async index(Request, Response) {
+        return Response.status(200).json({
             success: true,
             message: `${Request.path} Method ${Request.method}`
         });
     }
-    async profile(Request,Response) {
-        Response.status(200).json({
+    /**
+     * @author Faisal Ahmed
+     * @param {*} Request 
+     * @param {*} Response 
+     * @return Response
+     */
+    async profile(Request, Response) {
+        return Response.status(200).json({
             success: true,
             message: `${Request.path} Method ${Request.method}`
         });
     }
 
-};
+}
 
 
 
