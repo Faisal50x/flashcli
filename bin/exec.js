@@ -118,21 +118,6 @@ function installDependencies(opts) {
         }
     });
 
-
-    /*return npm.install(['@faisal50x/flash','http','debug'], {
-        cwd:root,
-        save:true
-    });*/
-    /*let child = child_process.spawn('npm',['i','@faisal50x/flash','http','debug'],{
-        stdio: 'inherit',
-        shell: true,
-        cwd: root
-    });
-
-    child.on('close', code =>{
-        log(`Child exited with code ${code}`);
-    });*/
-
 }
 
 const createPackage = async (packagename) => {
