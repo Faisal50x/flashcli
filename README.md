@@ -39,10 +39,11 @@ $ npm start
 
 This generator can also be further configured with the following command line flags.
 
-    -v, --version        output the version number
-    -h, --help           output usage information
+    -v, --version               output the version number
+    -h, --help                  output usage information
     Commands:
-    create|c <name>  Create new flash project
+    create|c <name>             Create new flash project
+    make controller <name>      Create new flash controller
 ## License
 
 [MIT](LICENSE)
