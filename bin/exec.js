@@ -6,6 +6,9 @@
  * @license MIT
  * */
 
+const ucfirst = (string) => {
+    return string[0].toUpperCase() + string.slice(1);
+};
 
 const program = require('commander'),
     path = require('path'),
@@ -18,6 +21,48 @@ let root, packageName, packageRoot, log = console.log;
 program
     .version(packageJson.version, '-v, --version')
     .description(packageJson.description);
+
+program
+    .command('make <resource> <name>')
+    .description('Create Flash Framework resource')
+    .action(async function (resource, name) {
+
+        if (resource.toString().toLowerCase() === 'controller'){
+            let $name = ucfirst(name);
+            const controller = '/** \n' +
+                ' * @author Faisal Ahmed\n' +
+                ' * @license MIT\n' +
+                ' * */\n' +
+                '\n' +
+                'class '+$name+'Controller {\n' +
+                '    /**\n' +
+                '     * @author Faisal Ahmed\n' +
+                '     * @param {*} Request \n' +
+                '     * @param {*} Response \n' +
+                '     * @return Response\n' +
+                '     */\n' +
+                '    async index(Request, Response) {\n' +
+                '        return Response.status(200).json({\n' +
+                '            success: true,\n' +
+                '            message: `${Request.path} Method ${Request.method}`\n' +
+                '        });\n' +
+                '    }\n' +
+                '}\n' +
+                '\n' +
+                '\n' +
+                '\n' +
+                'module.exports = '+$name+'Controller;';
+
+            await helper.write(controller,`app/controllers/${$name}Controller.js`)
+                .then(r => {
+                console.log(`Data: ${controller}`);
+                })
+                .catch(e => {
+                    console.log("error: " ,e);
+                });
+        }
+        console.log(`Resource: ${resource} name: ${name}`);
+    });
 
 program
     .command('create <name>')
@@ -148,8 +193,6 @@ const createPackage = async (packagename) => {
         process.exit();
     }
 };
-
-
 
 
 

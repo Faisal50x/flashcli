@@ -38,3 +38,15 @@ function copyFolderRecursiveSync(source, target) {
 }
 
 module.exports.move = (source, target) => copyFolderRecursiveSync(source, target);
+
+
+module.exports.write = (data, target) => new Promise((resolve, reject) => {
+
+    fs.writeFile(path.join(path.resolve(target)), data, (error) => {
+        if (error){
+            reject(error);
+        } else {
+            resolve(true);
+        }
+    });
+});
