@@ -27,40 +27,67 @@ program
     .description('Create Flash Framework resource')
     .action(async function (resource, name) {
 
-        if (resource.toString().toLowerCase() === 'controller'){
-            let $name = ucfirst(name);
-            const controller = '/** \n' +
-                ' * @author Faisal Ahmed\n' +
-                ' * @license MIT\n' +
-                ' * */\n' +
-                '\n' +
-                'class '+$name+'Controller {\n' +
-                '    /**\n' +
-                '     * @author Faisal Ahmed\n' +
-                '     * @param {*} Request \n' +
-                '     * @param {*} Response \n' +
-                '     * @return Response\n' +
-                '     */\n' +
-                '    async index(Request, Response) {\n' +
-                '        return Response.status(200).json({\n' +
-                '            success: true,\n' +
-                '            message: `${Request.path} Method ${Request.method}`\n' +
-                '        });\n' +
-                '    }\n' +
-                '}\n' +
-                '\n' +
-                '\n' +
-                '\n' +
-                'module.exports = '+$name+'Controller;';
+        switch (resource.toString().toLowerCase()) {
+            case 'controller':
+                let $name = ucfirst(name);
+                const controller = '/** \n' +
+                    ' * @author Faisal Ahmed\n' +
+                    ' * @license MIT\n' +
+                    ' * */\n' +
+                    '\n' +
+                    'class '+$name+'Controller {\n' +
+                    '    /**\n' +
+                    '     * @author Faisal Ahmed\n' +
+                    '     * @param {*} Request \n' +
+                    '     * @param {*} Response \n' +
+                    '     * @return Response\n' +
+                    '     */\n' +
+                    '    async index(Request, Response) {\n' +
+                    '        return Response.status(200).json({\n' +
+                    '            success: true,\n' +
+                    '            message: `${Request.path} Method ${Request.method}`\n' +
+                    '        });\n' +
+                    '    }\n' +
+                    '}\n' +
+                    '\n' +
+                    '\n' +
+                    '\n' +
+                    'module.exports = '+$name+'Controller;';
 
-            await helper.write(controller,`app/controllers/${$name}Controller.js`)
-                .then(r => {
-                console.log(`Data: ${controller}`);
-                })
-                .catch(e => {
-                    console.log("error: " ,e);
-                });
+                await helper.write(controller,`app/controllers/${$name}Controller.js`)
+                    .then(r => {
+                        console.log(`Data: ${controller}`);
+                    })
+                    .catch(e => {
+                        console.log("error: " ,e);
+                    });
+                break;
+            case 'middleware':
+                const middleware = '/** \n' +
+                    ' * @author Faisal Ahmed\n' +
+                    ' * @license MIT\n' +
+                    ' * */\n' +
+                    'module.exports = (Request, Response, next) => {\n' +
+                    '    //Do something here\n' +
+                    '    console.log("'+name+' Middleware");\n' +
+                    '    next();\n' +
+                    '};';
+                await helper.write(middleware,`app/middleware/${name}.js`)
+                    .then(r => {
+                        console.log(`Data: ${middleware}`);
+                    })
+                    .catch(e => {
+                        console.log(`Error: ${e}`);
+                    });
+                break;
+            case 'model':
+
+                break;
+            default:
+
+                break;
         }
+
         console.log(`Resource: ${resource} name: ${name}`);
     });
 
