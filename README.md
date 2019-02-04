@@ -1,7 +1,6 @@
 # Flashcli [![NPM Version][npm-image]][npm-url]
+
 [Flash'](https://www.npmjs.com/package/@faisal50x/flash) application generator.
-
-
 
 ## Installation
 
@@ -18,7 +17,7 @@ The quickest way to get started with flash is to utilize the executable `flash(1
 Create the app:
 
 ```bash
-$ flash create hello-world
+$ flash new hello-world
 ```
 
 Goto application folder :
@@ -40,8 +39,10 @@ This generator can also be further configured with the following command line fl
     -v, --version               output the version number
     -h, --help                  output usage information
     Commands:
-    create|c <name>             Create new flash project
+    new <name>                  Create new flash project
     make controller <name>      Create new flash controller
+    make middleware <name>      Create new flash middleware
+
 ## License
 
 [MIT](LICENSE)

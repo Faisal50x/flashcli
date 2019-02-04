@@ -35,7 +35,7 @@ program
                     ' * @license MIT\n' +
                     ' * */\n' +
                     '\n' +
-                    'class '+$name+'Controller {\n' +
+                    'class ' + $name + 'Controller {\n' +
                     '    /**\n' +
                     '     * @author Faisal Ahmed\n' +
                     '     * @param {*} Request \n' +
@@ -52,14 +52,14 @@ program
                     '\n' +
                     '\n' +
                     '\n' +
-                    'module.exports = '+$name+'Controller;';
+                    'module.exports = ' + $name + 'Controller;';
 
-                await helper.write(controller,`app/controllers/${$name}Controller.js`)
+                await helper.write(controller, `app/controllers/${$name}Controller.js`)
                     .then(r => {
-                        console.log(`Data: ${controller}`);
+                        log(chalk.green('\t ✔ '), `${$name}Controller create successfully \n`);
                     })
                     .catch(e => {
-                        console.log("error: " ,e);
+                        console.log("error: ", e);
                     });
                 break;
             case 'middleware':
@@ -69,12 +69,12 @@ program
                     ' * */\n' +
                     'module.exports = (Request, Response, next) => {\n' +
                     '    //Do something here\n' +
-                    '    console.log("'+name+' Middleware");\n' +
+                    '    console.log("' + name + ' Middleware");\n' +
                     '    next();\n' +
                     '};';
-                await helper.write(middleware,`app/middleware/${name}.js`)
+                await helper.write(middleware, `app/middleware/${name}.js`)
                     .then(r => {
-                        console.log(`Data: ${middleware}`);
+                        log(chalk.green('\t ✔ '), chalk.underline.bold(name), " middleware create successfully \n");
                     })
                     .catch(e => {
                         console.log(`Error: ${e}`);
@@ -87,13 +87,10 @@ program
 
                 break;
         }
-
-        console.log(`Resource: ${resource} name: ${name}`);
     });
 
 program
-    .command('create <name>')
-    .alias('c')
+    .command('new <name>')
     .description('Create new flash project 🙂')
     .action(name => {
         root = path.resolve(name);
