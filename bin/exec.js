@@ -81,7 +81,7 @@ program
                     });
                 break;
             case 'model':
-
+                    console.log("Model Ditected");
                 break;
             default:
 
