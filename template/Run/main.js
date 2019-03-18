@@ -9,7 +9,7 @@
 const debug = require('debug')('http'),
     app = require('../boot'),
     http = require('http'),
-    port = require('../app/config/config').general.PORT;
+    port = require('../App/Config/config').general.PORT;
 
 
 /**
