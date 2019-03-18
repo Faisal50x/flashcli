@@ -29,7 +29,7 @@ const flash = require('@faisal50x/flash'), app = flash();
  * @author Faisal Ahmed
  * @description Initialize all route
  */
-require('./app/config/web')(app);
+require('./App/Config/web')(app);
 
 
 

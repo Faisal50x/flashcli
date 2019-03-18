@@ -6,7 +6,7 @@
 module.exports = {
     /**
      * @var general
-     * @description app general settings
+     * @description App general settings
      */
     general: {
         /**

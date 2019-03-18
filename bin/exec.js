@@ -54,7 +54,7 @@ program
                     '\n' +
                     'module.exports = ' + $name + 'Controller;';
 
-                await helper.write(controller, `app/controllers/${$name}Controller.js`)
+                await helper.write(controller, `App/Controllers/${$name}Controller.js`)
                     .then(r => {
                         log(chalk.green('\t ✔ '), `${$name}Controller create successfully \n`);
                     })
@@ -72,9 +72,9 @@ program
                     '    console.log("' + name + ' Middleware");\n' +
                     '    next();\n' +
                     '};';
-                await helper.write(middleware, `app/middleware/${name}.js`)
+                await helper.write(middleware, `App/Middleware/${name}.js`)
                     .then(r => {
-                        log(chalk.green('\t ✔ '), chalk.underline.bold(name), " middleware create successfully \n");
+                        log(chalk.green('\t ✔ '), chalk.underline.bold(name), " Middleware create successfully \n");
                     })
                     .catch(e => {
                         console.log(`Error: ${e}`);
@@ -123,9 +123,9 @@ const createJson = () => {
         name: validatePkgName(packageName),
         version: '0.1.0',
         description: "Flash is a Nodejs framework that helps you quickly write simple yet powerful web applications and APIs.",
-        main: "run/main.js",
+        main: "Run/main.js",
         scripts: {
-            start: "node run/main.js"
+            start: "node Run/main.js"
         }
     };
     fs.writeFileSync(
@@ -152,11 +152,10 @@ function _t(cmd) {
     });
 }
 
-function installDependencies(opts) {
+function installDependencies(opts = {}) {
     let packages = ['@faisal50x/flash', 'http', 'debug'];
     /*if(packages.length == 0 || !packages || !packages.length){return Promise.reject("No packages found");}
     if(typeof packages == "string") packages = [packages];*/
-    if (!opts) opts = {};
     let cmdString = "npm install " + packages.join(" ") + " " +
         (opts.global ? " -g" : "") +
         (opts.save ? " --save" : " --no-save") +
